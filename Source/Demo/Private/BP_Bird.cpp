@@ -2,6 +2,7 @@
 
 
 #include "BP_Bird.h"
+#include "Components/CapsuleComponent.h"
 
 // Sets default values
 ABP_Bird::ABP_Bird()
