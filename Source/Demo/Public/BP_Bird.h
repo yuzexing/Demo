@@ -5,6 +5,11 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "BP_Bird.generated.h"
+
+class UCapsuleComponent;
+class USpringArmComponent;
+class UCameraComponent;
+
 UCLASS()
 class DEMO_API ABP_Bird : public APawn
 {
@@ -19,7 +24,17 @@ protected:
 	virtual void BeginPlay() override;
 
 	UPROPERTY(VisibleAnywhere)
-	class UCapsuleComponent* Capsule;
+	UCapsuleComponent* Capsule;
+
+	UPROPERTY(VisibleAnywhere)
+	USkeletalMeshComponent* SKMesh;
+
+	UPROPERTY(VisibleAnywhere)
+	USpringArmComponent* SpringArm;
+
+
+	UPROPERTY(VisibleAnywhere)
+	UCameraComponent* Camera;
 
 public:	
 	// Called every frame
@@ -27,5 +42,11 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	void MoveForward(float value);
+
+	void LookUp(float value);
+
+	void Turn(float value);
 
 };
